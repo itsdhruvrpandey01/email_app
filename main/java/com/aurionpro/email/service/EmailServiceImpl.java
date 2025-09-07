@@ -5,6 +5,7 @@ import com.aurionpro.email.entity.Email;
 import javax.mail.*;
 import javax.mail.internet.*;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,8 +14,10 @@ import java.util.Properties;
 @Service
 public class EmailServiceImpl implements EmailService {
 
-    private final String from = "dhruvrpandey01@gmail.com"; //  sender email
-    private final String password = "lkfr shuz rrvo rhpu"; //  app password
+	@Value("${email.sender}")
+    private String from; //  sender email
+	@Value("${email.password}")
+    private String password; //  app password
 
     @Override
     public boolean sendEmail(Email email) {
